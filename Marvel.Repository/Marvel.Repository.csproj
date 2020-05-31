@@ -5,10 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Configuration\" />
-    <Folder Include="Context\" />
-    <Folder Include="Repositories\Base\" />
     <Folder Include="Repositories\Entities\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Marvel.Domain\Marvel.Domain.csproj" />
   </ItemGroup>
 
 </Project>

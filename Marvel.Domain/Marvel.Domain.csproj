@@ -5,10 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Abstration\Base\" />
     <Folder Include="Abstration\Entities\" />
-    <Folder Include="Abstration\Repository\" />
-    <Folder Include="Entities\" />
     <Folder Include="MapperConfig\" />
     <Folder Include="Services\" />
   </ItemGroup>

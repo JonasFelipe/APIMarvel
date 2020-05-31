@@ -1,0 +1,10 @@
+﻿using Marvel.Domain.Entities.Base;
+
+namespace Marvel.Domain.Entities
+{
+    public class Image : Entity
+    {
+        public string path { get; set; }
+        public string extension { get; set; }
+    }
+}
