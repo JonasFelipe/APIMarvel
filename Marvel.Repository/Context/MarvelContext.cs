@@ -1,9 +1,7 @@
 ﻿using Marvel.Domain.Entities;
+using Marvel.Repository.Configuration.Mapping;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
+
 
 namespace Marvel.Repository.Context
 {
@@ -12,9 +10,15 @@ namespace Marvel.Repository.Context
         public MarvelContext(DbContextOptions<MarvelContext> options)
             : base(options)
         {
-            
+
         }
-        
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer("MarvelContext");
+        }
+
+
         public DbSet<Character> Character { get; set; }
         public DbSet<Comic> Comic { get; set; }
         public DbSet<ComicSummary> CommicSummary { get; set; }
@@ -31,17 +35,17 @@ namespace Marvel.Repository.Context
             modelBuilder
                 .ApplyConfiguration(new CharacterMappingConfiguration());
 
-            modelBuilder
-                .ApplyConfiguration(new CharacterMappingConfiguration());
+            //modelBuilder
+            //    .ApplyConfiguration(new CharacterMappingConfiguration());
 
-            modelBuilder
-                .ApplyConfiguration(new CharacterMappingConfiguration());
+            //modelBuilder
+            //    .ApplyConfiguration(new CharacterMappingConfiguration());
 
-            modelBuilder
-                .ApplyConfiguration(new CharacterMappingConfiguration());
+            //modelBuilder
+            //    .ApplyConfiguration(new CharacterMappingConfiguration());
 
-            modelBuilder
-                .ApplyConfiguration(new CharacterMappingConfiguration());
+            //modelBuilder
+            //    .ApplyConfiguration(new CharacterMappingConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }

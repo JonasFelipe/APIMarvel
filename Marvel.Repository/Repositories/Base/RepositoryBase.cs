@@ -1,13 +1,18 @@
-﻿using Marvel.Repository.Context;
+﻿using Marvel.Domain.Abstration.Repository.Base;
+using Marvel.Domain.Entities.Base;
+using Marvel.Repository.Context;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Marvel.Repository.Repositories.Base
 {
     public class RepositoryBase<TEntity> : IRepositoryBase<TEntity>
+        where TEntity : Entity
     {
         protected readonly DbSet<TEntity> EntityDbSet;
         protected readonly MarvelContext EntityContext;
@@ -52,7 +57,6 @@ namespace Marvel.Repository.Repositories.Base
         {
             var query =
                 await EntityDbSet
-                    .AsNoTracking()
                     .ToListAsync()
                     .ConfigureAwait(false);
 

@@ -1,4 +1,5 @@
 ﻿using Marvel.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Text;
 
 namespace Marvel.Repository.Configuration.Mapping
 {
-    public class CharacterMappingConfiguration
+    public class CharacterMappingConfiguration : IEntityTypeConfiguration<Character>
     {         
     
         public void Configure(EntityTypeBuilder<Character> builder)
@@ -18,17 +19,36 @@ namespace Marvel.Repository.Configuration.Mapping
 
         private void CharacterTableMapping(EntityTypeBuilder<Character> builder)
         {
-            throw new NotImplementedException();
+            builder.Property(con => con.name)
+                .HasColumnName("Name")
+                .HasMaxLength(100);
+
+            builder.Property(con => con.description)
+                .HasColumnName("Description")
+                .HasMaxLength(2000);
+
+            builder.Property(con => con.modified)
+                .HasColumnName("Modified")
+                .HasMaxLength(100);
+
+            builder.Property(con => con.resourceURI)
+                .HasColumnName("ResourceURI")
+                .HasMaxLength(100);
+
+            builder.HasOne(con => con.thumbnail)
+                .WithOne(c => c.Character)
+                .HasForeignKey<Image>(con => con.CurrentCharacterId);
+
         }
 
         private void CharacterPrimaryKeyMapping(EntityTypeBuilder<Character> builder)
         {
-            
+            builder.HasKey(u => u.Id);
         }
 
         private void CharacterPropertiesMapping(EntityTypeBuilder<Character> builder)
         {
-            throw new NotImplementedException();
+            builder.ToTable("Character");
         }
     }
 

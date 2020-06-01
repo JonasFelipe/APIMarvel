@@ -6,5 +6,8 @@ namespace Marvel.Domain.Entities
     {
         public string path { get; set; }
         public string extension { get; set; }
+
+        public virtual int CurrentCharacterId { get; set; }
+        public virtual Character Character { get; set; }
     }
 }
