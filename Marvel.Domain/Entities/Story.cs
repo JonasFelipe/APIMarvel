@@ -9,5 +9,8 @@ namespace Marvel.Domain.Entities
         public int returned { get; set; }
         public string collectionURI { get; set; }
         public List<StorySummary> items { get; set; }
+
+        public virtual int CharacterId { get; set; }
+        public virtual Character Character { get; set; }
     }
 }

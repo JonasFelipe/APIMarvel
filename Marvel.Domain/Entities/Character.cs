@@ -7,9 +7,8 @@ using System.Text;
 
 namespace Marvel.Domain.Entities
 {
-    public class Character
+    public class Character : Entity
     {
-        public int Id { get; set; }
         public string name { get; set; }
         public string description { get; set; }        
         public DateTime modified { get; set; }

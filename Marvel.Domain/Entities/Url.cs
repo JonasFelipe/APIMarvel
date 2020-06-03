@@ -8,7 +8,7 @@ namespace Marvel.Domain.Entities
         public string type { get; set; }
         public string url { get; set; }
 
-        public virtual int CurrentCharacterId { get; set; }
-        public virtual IList<Character> Character { get; set; }
+        public virtual int CharacterId { get; set; }
+        public virtual Character Character { get; set; }
     }
 }

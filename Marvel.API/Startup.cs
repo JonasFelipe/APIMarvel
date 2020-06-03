@@ -35,6 +35,26 @@ namespace Marvel.API
                     await context.Response.WriteAsync("Hello World!");
                 });
             });
+
+            app.UseCors(c =>
+            {
+                c.AllowAnyHeader();
+                c.AllowAnyMethod();
+                c.AllowAnyOrigin();
+            });
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Marfrig");
+            });
+
+            app.UseMvc();
+        }
+
+        void RegisterServices(IServiceCollection services)
+        {
+            new RootBootstrapper().RootRegisterServices(services);
         }
     }
 }

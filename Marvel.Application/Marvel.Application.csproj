@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Abstration\" />
     <Folder Include="Mapping\" />
     <Folder Include="Validator\" />
     <Folder Include="Services\" />

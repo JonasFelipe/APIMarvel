@@ -35,17 +35,35 @@ namespace Marvel.Repository.Context
             modelBuilder
                 .ApplyConfiguration(new CharacterMappingConfiguration());
 
-            //modelBuilder
-            //    .ApplyConfiguration(new CharacterMappingConfiguration());
+            modelBuilder
+                .ApplyConfiguration(new ComicMappingConfiguration());
 
-            //modelBuilder
-            //    .ApplyConfiguration(new CharacterMappingConfiguration());
+            modelBuilder
+                .ApplyConfiguration(new ComicSummaryMappingConfiguration());
 
-            //modelBuilder
-            //    .ApplyConfiguration(new CharacterMappingConfiguration());
+            modelBuilder
+                .ApplyConfiguration(new EventMappingConfiguration());
 
-            //modelBuilder
-            //    .ApplyConfiguration(new CharacterMappingConfiguration());
+            modelBuilder
+                .ApplyConfiguration(new EventSummaryMappingConfiguration());
+
+            modelBuilder
+                .ApplyConfiguration(new ImageMappingConfiguration());
+
+            modelBuilder
+                .ApplyConfiguration(new SerieMappingConfiguration());
+
+            modelBuilder
+                .ApplyConfiguration(new SerieSummaryMappingConfiguration());
+
+            modelBuilder
+                .ApplyConfiguration(new StoryMappingConfiguration());
+
+            modelBuilder
+                .ApplyConfiguration(new StorySummaryMappingConfiguration());
+
+            modelBuilder
+                .ApplyConfiguration(new UrlMappingConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }

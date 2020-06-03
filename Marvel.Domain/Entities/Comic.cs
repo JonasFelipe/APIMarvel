@@ -8,9 +8,9 @@ namespace Marvel.Domain.Entities
         public int available { get; set; }
         public int returned { get; set; }
         public string collectionURI { get; set; }
-        public ComicSummary items { get; set; }
+        public IList<ComicSummary> items { get; set; }
 
-        public virtual int CurrentCharacterId { get; set; }
-        public virtual IList<Character> Character { get; set; }
+        public virtual int CharacterId { get; set; }
+        public virtual Character Character { get; set; }
     }
 }

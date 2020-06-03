@@ -19,6 +19,7 @@ namespace Marvel.Repository.Configuration.Mapping
 
         private void CharacterTableMapping(EntityTypeBuilder<Character> builder)
         {
+
             builder.Property(con => con.name)
                 .HasColumnName("Name")
                 .HasMaxLength(100);
@@ -35,9 +36,9 @@ namespace Marvel.Repository.Configuration.Mapping
                 .HasColumnName("ResourceURI")
                 .HasMaxLength(100);
 
-            builder.HasOne(con => con.thumbnail)
-                .WithOne(c => c.Character)
-                .HasForeignKey<Image>(con => con.CurrentCharacterId);
+            builder.HasOne<Image>(x => x.thumbnail)
+                .WithOne(x => x.Character)
+                .HasForeignKey<Image>(x => x.CurrentCharacterId);
 
         }
 

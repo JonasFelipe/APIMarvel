@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Marvel.Domain.Abstration.Base
+namespace Marvel.Domain.Abstration.Service.Base
 {
     public interface IServiceBase<TEntity>
     {
