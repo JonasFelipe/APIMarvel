@@ -13,11 +13,6 @@ namespace Marvel.Repository.Context
 
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer("MarvelContext");
-        }
-
 
         public DbSet<Character> Character { get; set; }
         public DbSet<Comic> Comic { get; set; }

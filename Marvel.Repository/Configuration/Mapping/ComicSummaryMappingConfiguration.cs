@@ -12,12 +12,12 @@ namespace Marvel.Repository.Configuration.Mapping
     {
         public void Configure(EntityTypeBuilder<ComicSummary> builder)
         {
-            CharacterPropertiesMapping(builder);
-            CharacterPrimaryKeyMapping(builder);
-            CharacterTableMapping(builder);
+            PropertiesMapping(builder);
+            PrimaryKeyMapping(builder);
+            TableMapping(builder);
         }
 
-        private void CharacterPropertiesMapping(EntityTypeBuilder<ComicSummary> builder)
+        private void PropertiesMapping(EntityTypeBuilder<ComicSummary> builder)
         {
             builder.Property(x => x.name)
                 .HasMaxLength(200)
@@ -32,12 +32,12 @@ namespace Marvel.Repository.Configuration.Mapping
                 .HasForeignKey(x => x.ComicId);
         }
 
-        private void CharacterPrimaryKeyMapping(EntityTypeBuilder<ComicSummary> builder)
+        private void PrimaryKeyMapping(EntityTypeBuilder<ComicSummary> builder)
         {
             builder.HasKey(x => x.Id);
         }
 
-        private void CharacterTableMapping(EntityTypeBuilder<ComicSummary> builder)
+        private void TableMapping(EntityTypeBuilder<ComicSummary> builder)
         {
             builder.ToTable("ComicSummary");
         }

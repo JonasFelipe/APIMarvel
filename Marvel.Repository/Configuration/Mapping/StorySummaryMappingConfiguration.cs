@@ -11,12 +11,12 @@ namespace Marvel.Repository.Configuration.Mapping
     {
         public void Configure(EntityTypeBuilder<StorySummary> builder)
         {
-            CharacterPropertiesMapping(builder);
-            CharacterPrimaryKeyMapping(builder);
-            CharacterTableMapping(builder);
+            PropertiesMapping(builder);
+            PrimaryKeyMapping(builder);
+            TableMapping(builder);
         }
 
-        private void CharacterPropertiesMapping(EntityTypeBuilder<StorySummary> builder)
+        private void PropertiesMapping(EntityTypeBuilder<StorySummary> builder)
         {
             builder.Property(x => x.name)
                 .HasMaxLength(200)
@@ -26,17 +26,21 @@ namespace Marvel.Repository.Configuration.Mapping
                 .HasMaxLength(600)
                 .HasColumnName("ResourceURI");
 
+            builder.Property(x => x.type)
+                .HasMaxLength(600)
+                .HasColumnName("Type");
+
             builder.HasOne<Story>(x => x.Story)
                 .WithMany(x => x.items)
                 .HasForeignKey(x => x.StoryId);
         }
 
-        private void CharacterPrimaryKeyMapping(EntityTypeBuilder<StorySummary> builder)
+        private void PrimaryKeyMapping(EntityTypeBuilder<StorySummary> builder)
         {
             builder.HasKey(x => x.Id);
         }
 
-        private void CharacterTableMapping(EntityTypeBuilder<StorySummary> builder)
+        private void TableMapping(EntityTypeBuilder<StorySummary> builder)
         {
             builder.ToTable("StorySummary");
         }

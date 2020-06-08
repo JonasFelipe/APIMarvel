@@ -11,17 +11,14 @@ namespace Marvel.Repository.Configuration.Mapping
     {
         public void Configure(EntityTypeBuilder<Story> builder)
         {
-            CharacterPropertiesMapping(builder);
-            CharacterPrimaryKeyMapping(builder);
-            CharacterTableMapping(builder);
+            PropertiesMapping(builder);
+            PrimaryKeyMapping(builder);
+            TableMapping(builder);
         }
 
 
-        private void CharacterPropertiesMapping(EntityTypeBuilder<Story> builder)
+        private void PropertiesMapping(EntityTypeBuilder<Story> builder)
         {
-            builder.Property(x => x.returned)
-                .HasColumnName("Returned");
-
             builder.Property(x => x.available)
                 .HasColumnName("Available");
 
@@ -29,17 +26,14 @@ namespace Marvel.Repository.Configuration.Mapping
                 .HasMaxLength(200)
                 .HasColumnName("CollectionURI");
 
-            builder.HasOne<Character>(con => con.Character)
-                .WithMany(con => con.stories)
-                .HasForeignKey(con => con.CharacterId);
         }
 
-        private void CharacterPrimaryKeyMapping(EntityTypeBuilder<Story> builder)
+        private void PrimaryKeyMapping(EntityTypeBuilder<Story> builder)
         {
             builder.HasKey(x => x.Id);
         }
 
-        private void CharacterTableMapping(EntityTypeBuilder<Story> builder)
+        private void TableMapping(EntityTypeBuilder<Story> builder)
         {
             builder.ToTable("Story");
         }

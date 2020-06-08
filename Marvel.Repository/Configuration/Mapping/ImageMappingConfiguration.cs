@@ -11,12 +11,12 @@ namespace Marvel.Repository.Configuration.Mapping
     {
         public void Configure(EntityTypeBuilder<Image> builder)
         {
-            CharacterPropertiesMapping(builder);
-            CharacterPrimaryKeyMapping(builder);
-            CharacterTableMapping(builder);
+            PropertiesMapping(builder);
+            PrimaryKeyMapping(builder);
+            TableMapping(builder);
         }
 
-        private void CharacterPropertiesMapping(EntityTypeBuilder<Image> builder)
+        private void PropertiesMapping(EntityTypeBuilder<Image> builder)
         {
 
             builder.Property(x => x.extension)
@@ -29,12 +29,12 @@ namespace Marvel.Repository.Configuration.Mapping
 
         }
 
-        private void CharacterPrimaryKeyMapping(EntityTypeBuilder<Image> builder)
+        private void PrimaryKeyMapping(EntityTypeBuilder<Image> builder)
         {
             builder.HasKey(x => x.Id);
         }
 
-        private void CharacterTableMapping(EntityTypeBuilder<Image> builder)
+        private void TableMapping(EntityTypeBuilder<Image> builder)
         {
             builder.ToTable("Image");
         }

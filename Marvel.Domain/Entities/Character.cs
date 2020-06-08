@@ -15,19 +15,20 @@ namespace Marvel.Domain.Entities
         public string resourceURI { get; set; }
         public List<Url> urls { get; set; }
         public Image thumbnail { get; set; }
-        public IList<Comic> comics { get; set; }
-        public IList<Story> stories { get; set; }
-        public IList<Event> events { get; set; }
-        public IList<Serie> series { get; set; }
+        public Comic comics { get; set; }
+        public Story stories { get; set; }
+        public Event events { get; set; }
+        public Serie series { get; set; }
 
 
         public Character()
         {
+            urls = new List<Url>();
             thumbnail = new Image();
-            comics = new List<Comic>();
-            stories = new List<Story>();
-            events = new List<Event>();
-            series = new List<Serie>();
+            comics =  new Comic();
+            stories = new Story();
+            events =  new Event();
+            series =  new Serie();
         }
     }
 }

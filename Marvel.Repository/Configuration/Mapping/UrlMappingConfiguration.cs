@@ -11,12 +11,12 @@ namespace Marvel.Repository.Configuration.Mapping
     {
         public void Configure(EntityTypeBuilder<Url> builder)
         {
-            CharacterPropertiesMapping(builder);
-            CharacterPrimaryKeyMapping(builder);
-            CharacterTableMapping(builder);
+            PropertiesMapping(builder);
+            PrimaryKeyMapping(builder);
+            TableMapping(builder);
         }
 
-        private void CharacterTableMapping(EntityTypeBuilder<Url> builder)
+        private void TableMapping(EntityTypeBuilder<Url> builder)
         {
             builder.Property(con => con.type)
                 .HasColumnName("Type")
@@ -31,12 +31,12 @@ namespace Marvel.Repository.Configuration.Mapping
                 .HasForeignKey(con => con.CharacterId);
         }
 
-        private void CharacterPrimaryKeyMapping(EntityTypeBuilder<Url> builder)
+        private void PrimaryKeyMapping(EntityTypeBuilder<Url> builder)
         {
             builder.HasKey(con => con.Id);
         }
 
-        private void CharacterPropertiesMapping(EntityTypeBuilder<Url> builder)
+        private void PropertiesMapping(EntityTypeBuilder<Url> builder)
         {
             builder.ToTable("Url");
         }

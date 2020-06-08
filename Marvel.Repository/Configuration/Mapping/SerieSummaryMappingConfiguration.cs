@@ -11,12 +11,12 @@ namespace Marvel.Repository.Configuration.Mapping
     {
         public void Configure(EntityTypeBuilder<SerieSummary> builder)
         {
-            CharacterPropertiesMapping(builder);
-            CharacterPrimaryKeyMapping(builder);
-            CharacterTableMapping(builder);
+            PropertiesMapping(builder);
+            PrimaryKeyMapping(builder);
+            TableMapping(builder);
         }
 
-        private void CharacterPropertiesMapping(EntityTypeBuilder<SerieSummary> builder)
+        private void PropertiesMapping(EntityTypeBuilder<SerieSummary> builder)
         {
             builder.Property(x => x.name)
                 .HasMaxLength(200)
@@ -31,12 +31,12 @@ namespace Marvel.Repository.Configuration.Mapping
                 .HasForeignKey(x => x.SerieId);
         }
 
-        private void CharacterPrimaryKeyMapping(EntityTypeBuilder<SerieSummary> builder)
+        private void PrimaryKeyMapping(EntityTypeBuilder<SerieSummary> builder)
         {
             builder.HasKey(x => x.Id);
         }
 
-        private void CharacterTableMapping(EntityTypeBuilder<SerieSummary> builder)
+        private void TableMapping(EntityTypeBuilder<SerieSummary> builder)
         {
             builder.ToTable("SerieSummary");
         }

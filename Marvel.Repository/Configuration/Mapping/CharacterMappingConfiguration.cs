@@ -12,12 +12,12 @@ namespace Marvel.Repository.Configuration.Mapping
     
         public void Configure(EntityTypeBuilder<Character> builder)
         {
-            CharacterPropertiesMapping(builder);
-            CharacterPrimaryKeyMapping(builder);
-            CharacterTableMapping(builder);
+            PropertiesMapping(builder);
+            PrimaryKeyMapping(builder);
+            TableMapping(builder);
         }
 
-        private void CharacterTableMapping(EntityTypeBuilder<Character> builder)
+        private void TableMapping(EntityTypeBuilder<Character> builder)
         {
 
             builder.Property(con => con.name)
@@ -38,16 +38,32 @@ namespace Marvel.Repository.Configuration.Mapping
 
             builder.HasOne<Image>(x => x.thumbnail)
                 .WithOne(x => x.Character)
-                .HasForeignKey<Image>(x => x.CurrentCharacterId);
+                .HasForeignKey<Image>(x => x.CharacterId);
+
+            builder.HasOne<Comic>(x => x.comics)
+                .WithOne(x => x.Character)
+                .HasForeignKey<Comic>(x => x.CharacterId);
+
+            builder.HasOne<Event>(x => x.events)
+                .WithOne(x => x.Character)
+                .HasForeignKey<Event>(x => x.CharacterId);
+
+            builder.HasOne<Story>(x => x.stories)
+                .WithOne(x => x.Character)
+                .HasForeignKey<Story>(x => x.CharacterId);
+
+            builder.HasOne<Serie>(x => x.series)
+                .WithOne(x => x.Character)
+                .HasForeignKey<Serie>(x => x.CharacterId);
 
         }
 
-        private void CharacterPrimaryKeyMapping(EntityTypeBuilder<Character> builder)
+        private void PrimaryKeyMapping(EntityTypeBuilder<Character> builder)
         {
             builder.HasKey(u => u.Id);
         }
 
-        private void CharacterPropertiesMapping(EntityTypeBuilder<Character> builder)
+        private void PropertiesMapping(EntityTypeBuilder<Character> builder)
         {
             builder.ToTable("Character");
         }

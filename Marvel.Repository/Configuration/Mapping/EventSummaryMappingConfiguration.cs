@@ -11,12 +11,12 @@ namespace Marvel.Repository.Configuration.Mapping
     {
         public void Configure(EntityTypeBuilder<EventSummary> builder)
         {
-            CharacterPropertiesMapping(builder);
-            CharacterPrimaryKeyMapping(builder);
-            CharacterTableMapping(builder);
+            PropertiesMapping(builder);
+            PrimaryKeyMapping(builder);
+            TableMapping(builder);
         }
 
-        private void CharacterPropertiesMapping(EntityTypeBuilder<EventSummary> builder)
+        private void PropertiesMapping(EntityTypeBuilder<EventSummary> builder)
         {
             builder.Property(x => x.name)
                 .HasMaxLength(200)
@@ -31,12 +31,12 @@ namespace Marvel.Repository.Configuration.Mapping
                 .HasForeignKey(x => x.EventId);
         }
 
-        private void CharacterPrimaryKeyMapping(EntityTypeBuilder<EventSummary> builder)
+        private void PrimaryKeyMapping(EntityTypeBuilder<EventSummary> builder)
         {
             builder.HasKey(x => x.Id);
         }
 
-        private void CharacterTableMapping(EntityTypeBuilder<EventSummary> builder)
+        private void TableMapping(EntityTypeBuilder<EventSummary> builder)
         {
             builder.ToTable("EventSummary");
         }
