@@ -10,13 +10,18 @@ namespace Marvel.Application.Mapping
         {
             CreateMap<CharacterInput, Character>()
                 .ConstructUsing(c => new Character())
-                .ForMember(c => c.Id, c => c.Ignore());
+                .ForMember(c => c.Id, c => c.Ignore()).ReverseMap();
+
+            //CreateMap<CharacterViewModel, Character>()
+            //    .ConstructUsing(c => new Character())
+            //    .ForMember(c => c.Id, c => c.Ignore()).ReverseMap();
 
             CreateMap<UrlViewModel, Url>()
                 .ConstructUsing(c => new Url())
                 .ForMember(c => c.Id, c => c.Ignore())
                 .ForMember(c => c.CharacterId, c => c.Ignore())
-                .ForMember(c => c.Character, c=> c.Ignore());
+                .ForMember(c => c.Character, c=> c.Ignore())
+                .ReverseMap();
 
             CreateMap<ComicViewModel, Comic>()
                 .ConstructUsing(c => new Comic())

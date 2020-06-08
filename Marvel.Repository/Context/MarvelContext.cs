@@ -13,7 +13,6 @@ namespace Marvel.Repository.Context
 
         }
 
-
         public DbSet<Character> Character { get; set; }
         public DbSet<Comic> Comic { get; set; }
         public DbSet<ComicSummary> CommicSummary { get; set; }
@@ -24,6 +23,7 @@ namespace Marvel.Repository.Context
         public DbSet<SerieSummary> SerieSummary { get; set; }
         public DbSet<Story> Story { get; set; }
         public DbSet<StorySummary> StorySummary { get; set; }
+        public DbSet<Url> Url { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

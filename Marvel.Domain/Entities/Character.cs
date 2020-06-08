@@ -1,4 +1,5 @@
 ﻿using Marvel.Domain.Entities.Base;
+using Microsoft.EntityFrameworkCore.Internal;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -13,12 +14,12 @@ namespace Marvel.Domain.Entities
         public string description { get; set; }        
         public DateTime modified { get; set; }
         public string resourceURI { get; set; }
-        public List<Url> urls { get; set; }
-        public Image thumbnail { get; set; }
-        public Comic comics { get; set; }
-        public Story stories { get; set; }
-        public Event events { get; set; }
-        public Serie series { get; set; }
+        public virtual List<Url> urls { get; set; }
+        public virtual Image thumbnail { get; set; }
+        public virtual Comic comics { get; set; }
+        public virtual Story stories { get; set; }
+        public virtual Event events { get; set; }
+        public virtual Serie series { get; set; }
 
 
         public Character()

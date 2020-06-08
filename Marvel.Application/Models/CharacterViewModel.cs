@@ -6,7 +6,7 @@ namespace Marvel.Application.Services.Models
 {
     public class CharacterViewModel
     {
-        public int id { get; set; }
+        public int Id { get; set; }
         public string name { get; set; }
         public string description { get; set; }
         public DateTime modified { get; set; }

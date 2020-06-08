@@ -7,7 +7,7 @@ namespace Marvel.Domain.Entities
     {
         public int? available { get; set; }
         public string collectionURI { get; set; }
-        public IList<EventSummary> items { get; set; }
+        public virtual IList<EventSummary> items { get; set; }
 
         public virtual int CharacterId { get; set; }
         public virtual Character Character { get; set; }

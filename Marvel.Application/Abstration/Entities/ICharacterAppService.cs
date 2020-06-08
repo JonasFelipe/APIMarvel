@@ -11,9 +11,9 @@ namespace Marvel.Application.Abstration
     public interface ICharacterAppService
     {
         Task<CharacterViewModel> GetById(int id);
-        Task<CharacterViewModel> Add(CharacterInput compraGadoInput);
+        Task<CharacterViewModel> Add(CharacterInput characterInput);
         Task<bool?> Delete(int id);
-        Task<CharacterViewModel> Update(int id, CharacterInput compraGadoViewModel);
-        Task<IList<CharacterViewModel>> GetCharactersAtParameters(CharacterParameters characterParameters);
+        Task<CharacterViewModel> Update(int id, CharacterInput characterInput);
+        Task<CharacterDataWrapper> GetCharactersAtParameters(CharacterParameters characterParameters);
     }
 }

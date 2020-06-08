@@ -9,6 +9,7 @@ using Marvel.Domain.Exceptions;
 using Marvel.Domain.MapperConfig;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,8 +35,6 @@ namespace Marvel.Application.Services.AppCharacter
 
             await _characterService.AddAsync(obj);
 
-            //return obj.MapTo<CompraGadoViewModel>();
-
             return null;
         }
 
@@ -49,21 +48,57 @@ namespace Marvel.Application.Services.AppCharacter
             throw new NotImplementedException();
         }
 
-        public async Task<IList<CharacterViewModel>> GetCharactersAtParameters(CharacterParameters characterParameters)
+        public async Task<CharacterDataWrapper> GetCharactersAtParameters(CharacterParameters characterParameters)
         {
+            List<CharacterViewModel> result = new List<CharacterViewModel>();
+
             if (characterParameters.ValidLimit())
                 throw new ConflictRequestException("Limit greater than 100.");
 
-            var obj = await _characterService.GetCharactersAtParameters(characterParameters);
+            var listcharacter = await _characterService.GetCharactersAtParameters(characterParameters);
 
-            //return obj.MapTo<List<CharacterViewModel>>();
+            foreach (Character character in listcharacter)
+            {
+                var obj = _mapper.Map<CharacterViewModel>(character);
 
-            return null;
+                result.Add(obj);
+            }
+
+            CharacterDataWrapper characterDataWrapper = new CharacterDataWrapper();
+
+
+            GetDataWrapper(characterDataWrapper, characterParameters);
+            characterDataWrapper.data.total = characterDataWrapper.data.count = result.Count;
+            characterDataWrapper.data.results = result;
+
+            return characterDataWrapper;
         }
 
-        public Task<CharacterViewModel> Update(int id, CharacterInput compraGadoViewModel)
+
+        public async Task<CharacterViewModel> Update(int id, CharacterInput characterInput)
         {
-            throw new NotImplementedException();
+            var obj = _mapper.Map<Character>(characterInput);
+
+            var result = await _characterService.UpdateAsync(obj);
+
+            var character = _mapper.Map<CharacterViewModel>(result);
+
+            return character;
+        }
+
+        private void GetDataWrapper(CharacterDataWrapper characterDataWrapper, CharacterParameters characterParameters)
+        {
+            characterDataWrapper.Code = 200;
+            characterDataWrapper.Status = "OK";
+            characterDataWrapper.Copyright = "© 2020 MARVEL";
+
+            characterDataWrapper.AttributionText = "Data provided by Marvel. © 2020 MARVEL";
+            characterDataWrapper.AttributionHTML = "<a href=\"http://marvel.com\">Data provided by Marvel. © 2020 MARVEL</a>";
+            characterDataWrapper.etag = "b7f6ec76174886d8042748a557e7099ad1151f12";
+
+            characterDataWrapper.data = new CharacterDataContainer();
+            characterDataWrapper.data.offset = characterParameters.Offset;
+            characterDataWrapper.data.limit = characterParameters.Limit;
         }
     }
 }

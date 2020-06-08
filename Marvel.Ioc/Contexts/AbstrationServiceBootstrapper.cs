@@ -28,6 +28,7 @@ namespace Marvel.Ioc.Contexts
             services.AddScoped<IEventService, EventService>();
             services.AddScoped<ISerieService, SerieService>();
             services.AddScoped<IStoryService, StoryService>();
+            services.AddScoped<IUrlService, UrlService>();
         }
 
         private void RegisterData(IServiceCollection services)
@@ -38,12 +39,12 @@ namespace Marvel.Ioc.Contexts
             services.AddScoped<IEventRepository, EventRepository>();
             services.AddScoped<ISerieRepository, SerieRepository>();
             services.AddScoped<IStoryRepository, StoryRepository>();
+            services.AddScoped<IUrlRepository, UrlRepository>();
         }
 
         private void RegisterAppServices(IServiceCollection services)
         {
             services.AddScoped<ICharacterAppService, CharacterAppService>();
-            //services.AddScoped<ICompraGadoItemAppService, CompraGadoItemAppService>();
         }
     }
 }

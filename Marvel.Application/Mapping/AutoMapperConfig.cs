@@ -13,6 +13,7 @@ namespace Marvel.Application.Mapping
                 config =>
                 {
                     config.AddProfile<ApplicationToDomainMappingProfile>();
+                    //config.AddProfile<DomainToApplicationMappingProfile>();
                 }
             );
         }

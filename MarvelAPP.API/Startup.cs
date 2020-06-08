@@ -36,10 +36,13 @@ namespace MarvelAPP.API
             services.AddControllers();
 
             services.AddAutoMapper(Assembly.Load("Marvel.Application"));
+            services
+                .AddAutoMapper(Assembly.Load("Marvel.Domain"));
 
             services.AddScoped<ErrorExceptionFilter>();
             services.AddDbContext<MarvelContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("MarvelContext")));
+                options.UseSqlServer(Configuration.GetConnectionString("MarvelContext"))
+                .UseLazyLoadingProxies());
 
             services.AddControllers()
                 .AddNewtonsoftJson();

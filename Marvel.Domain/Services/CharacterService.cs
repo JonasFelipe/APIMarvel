@@ -5,11 +5,12 @@ using Marvel.Domain.Entities.Models;
 using Marvel.Domain.Services.Base;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Marvel.Domain.Services
-{
+{   
     public class CharacterService : ServiceBase<Character>, ICharacterService
     {
         private readonly ICharacterRepository _characterRepository;
@@ -22,7 +23,9 @@ namespace Marvel.Domain.Services
 
         public async Task<IList<Character>> GetCharactersAtParameters(CharacterParameters characterParameters)
         {
-            return await _characterRepository.GetCharacterAtParameters(characterParameters);
+            var result = await _characterRepository.GetCharacterAtParameters(characterParameters);
+            
+            return result;
         }
     }
 }

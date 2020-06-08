@@ -25,7 +25,7 @@ namespace MarvelAPP.API.Controllers
 
         // GET: api/<CharacterController>
         [HttpGet]
-        public async Task<ActionResult> Get([FromQuery] CharacterParameters charaterParameters)
+        public ActionResult Get([FromQuery] CharacterParameters charaterParameters)
         {
             var result = _characterAppService.GetCharactersAtParameters(charaterParameters);
 
