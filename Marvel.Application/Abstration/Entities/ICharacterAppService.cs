@@ -1,5 +1,4 @@
 ﻿using Marvel.Application.Services.Models;
-using Marvel.Domain.Entities;
 using Marvel.Domain.Entities.Models;
 using System;
 using System.Collections.Generic;

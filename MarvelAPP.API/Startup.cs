@@ -9,6 +9,7 @@ using Marvel.Repository.Context;
 using MarvelAPP.API.Filters;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -47,6 +48,23 @@ namespace MarvelAPP.API
             services.AddControllers()
                 .AddNewtonsoftJson();
 
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1",
+                    new OpenApiInfo
+                    {
+                        Title = "API Marvel",
+                        Version = "v1",
+                        Description = "API Marvel Characters, Series, Comics and Events",
+                        Contact = new OpenApiContact
+                        {
+                            Name = "Jonas Felipe Virgilio da Silva",
+                            Url = new Uri("https://github.com/jonasfelipe")
+                        }
+                    });
+
+            });
+
             RegisterServices(services);
         }
 
@@ -67,6 +85,14 @@ namespace MarvelAPP.API
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            // Ativando middlewares para uso do Swagger
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json",
+                    "API Marvel");
             });
         }
 

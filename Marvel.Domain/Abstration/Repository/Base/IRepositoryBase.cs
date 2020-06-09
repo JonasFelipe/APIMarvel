@@ -15,4 +15,8 @@ namespace Marvel.Domain.Abstration.Repository.Base
         Task<TEntity> UpdateAsync(TEntity entity);
         Task DeleteAsync(TEntity entity);
     }
+
+    public interface IRepositoryBase
+    {
+    }
 }

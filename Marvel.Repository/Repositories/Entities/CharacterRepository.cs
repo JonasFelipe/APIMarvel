@@ -42,15 +42,6 @@ namespace Marvel.Repository.Repositories.Entities
                 var idSerie = characterParameters.Series == null ? "" : characterParameters.Series.ToString();
                 var idStory = characterParameters.Stories == null ? "" : characterParameters.Stories.ToString();
 
-                //var query = marvelContext.Character.Where(x => x.name.Equals(nameCharacter) &&
-                //                        (x.modified >= dtModified) &&
-                //                        (x.name.StartsWith(startName)) &&
-                //                        (x.comics.items.Any(y => y.resourceURI.Contains(idComic))) &&
-                //                        (x.series.items.Any(z => z.resourceURI.Contains(idSerie))) &&
-                //                        (x.stories.items.Any(a => a.resourceURI.Contains(idStory))) &&
-                //                        (x.events.items.Any(y => y.resourceURI.Contains(idEvent))))
-                //                        .Take(characterParameters.Limit ?? 100);
-
                 var query = ((from character in marvelContext.Character
                               join comic in marvelContext.Comic on character.Id equals comic.CharacterId
                               join events in marvelContext.Event on character.Id equals events.CharacterId
@@ -65,12 +56,6 @@ namespace Marvel.Repository.Repositories.Entities
                               select character
                             )).Where(x => x.name.Equals(nameCharacter) || x.name.StartsWith(startName)
                                      && x.modified >= dtModified).Distinct().Take(characterParameters.Limit ?? 100).AsQueryable();
-
-                //query = query.Include(x => x.comics).ThenInclude(it => it.items);
-                //query = query.Include(x => x.events).ThenInclude(it => it.items);
-                //query = query.Include(x => x.series).ThenInclude(it => it.items);
-                //query = query.Include(x => x.thumbnail).Include(x => x.urls);
-                //query = query.Include(x => x.stories).ThenInclude(it => it.items);
 
                 characters = query.ToList();
                

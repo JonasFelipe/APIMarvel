@@ -1,9 +1,8 @@
-﻿using Marvel.Application.Services.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Marvel.Domain.Entities
+namespace Marvel.Application.Services.Models
 {
     public class CharacterDataWrapper
     {
